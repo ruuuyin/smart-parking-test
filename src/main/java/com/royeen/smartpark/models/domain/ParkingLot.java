@@ -17,5 +17,6 @@ public class ParkingLot {
     private String location;
     private Integer capacity;
     private Integer occupancy;
+    private Integer availableSpace;
 
 }

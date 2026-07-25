@@ -130,7 +130,7 @@ class CheckOutApiTest extends BaseApiTest {
         var contentAsString = super.mockMvc.perform(post(URI_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestBody)))
-                .andExpect(status().isBadRequest())
+                .andExpect(status().isNotFound())
                 .andReturn().getResponse().getContentAsString();
 
         var response = getApiResponseFromString(contentAsString);

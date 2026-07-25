@@ -8,8 +8,7 @@ import com.royeen.smartpark.models.presentation.ParkingLotCheckOutRequest;
 import com.royeen.smartpark.models.presentation.ParkingLotCheckOutResponse;
 import com.royeen.smartpark.models.presentation.RegisterParkingLotRequest;
 import com.royeen.smartpark.models.presentation.RegisterParkingLotResponse;
-
-import java.util.List;
+import com.royeen.smartpark.models.presentation.base.PageResponse;
 
 public interface ParkingLotService {
     RegisterParkingLotResponse registerParkingLot(RegisterParkingLotRequest registerParkingLotRequest);
@@ -20,6 +19,6 @@ public interface ParkingLotService {
 
     GetParkingLotByIdResponse getParkingLotByLotId(String lotId);
 
-    List<GetVehiclesInParkingLotResponse> getVehiclesInParkingLotByLotId(String lotId);
+    PageResponse<GetVehiclesInParkingLotResponse> getVehiclesInParkingLotByLotId(String lotId, int page, int size);
 
 }

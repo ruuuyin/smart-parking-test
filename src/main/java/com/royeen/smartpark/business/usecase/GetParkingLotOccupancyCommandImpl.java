@@ -12,7 +12,7 @@ public class GetParkingLotOccupancyCommandImpl implements GetParkingLotOccupancy
     private final ParkingTransactionRepository repository;
 
     @Override
-    public long execute(String lotId) {
+    public int execute(String lotId) {
         return repository.countByParkingLotIdAndParkingStatus(lotId, ParkingStatus.CHECKED_IN);
     }
 }
