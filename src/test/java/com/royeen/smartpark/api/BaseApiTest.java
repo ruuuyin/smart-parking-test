@@ -24,7 +24,7 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
-public class BaseApiTest {
+public abstract class BaseApiTest {
 
     @Autowired
     protected MockMvc mockMvc;
@@ -50,7 +50,7 @@ public class BaseApiTest {
         return objectMapper.readValue(objectMapper.writeValueAsString(response.data()), clazz);
     }
 
-    protected <T> java.util.List<T> getListListDataFromApiResponse(ApiResponse response, Class<T> clazz) {
+    protected <T> java.util.List<T> getListDataFromApiResponse(ApiResponse response, Class<T> clazz) {
         return objectMapper.readValue(objectMapper.writeValueAsString(response.data()), objectMapper.getTypeFactory().constructCollectionType(java.util.List.class, clazz));
     }
 }

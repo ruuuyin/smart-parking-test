@@ -7,7 +7,6 @@ import com.royeen.smartpark.models.entity.VehicleEntity;
 import com.royeen.smartpark.models.presentation.RegisterVehicleResponse;
 import com.royeen.smartpark.models.presentation.base.ApiResponseType;
 import com.royeen.smartpark.models.presentation.base.ErrorResponse;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,7 +20,6 @@ class VehicleRegistrationApiTest extends BaseApiTest {
     @Autowired
     VehicleRepository vehicleRepository;
 
-    @DisplayName("Given: Valid Params; When: Register Vehicle; Then: Return Created with Response")
     @Test
     void testSuccess() throws Exception {
 
@@ -51,7 +49,6 @@ class VehicleRegistrationApiTest extends BaseApiTest {
         assertThat(data.ownerName()).isEqualTo(requestBody.ownerName());
     }
 
-    @DisplayName("Given: Non-unique license plate Params; When: Register Vehicle; Then: Return Created with Response")
     @Test
     void testNonUniqueLicensePlate() throws Exception {
 
@@ -84,7 +81,6 @@ class VehicleRegistrationApiTest extends BaseApiTest {
         assertThat(data).isNull();
     }
 
-    @DisplayName("Given: Invalid Params; When: Register Vehicle; Then: Return Bad Request with Response")
     @Test
     void testInvalidRequestsBody() throws Exception {
         var requestBody = RegisterVehicleRequest.builder()
@@ -100,7 +96,7 @@ class VehicleRegistrationApiTest extends BaseApiTest {
                 .andReturn().getResponse().getContentAsString();
 
         var response = getApiResponseFromString(contentAsString);
-        var errorResponse = getListListDataFromApiResponse(response, ErrorResponse.class);
+        var errorResponse = getListDataFromApiResponse(response, ErrorResponse.class);
 
         assertThat(response).isNotNull();
         assertThat(response.status()).isEqualTo(ApiResponseType.MULTIPLE_ERROR);
@@ -126,7 +122,7 @@ class VehicleRegistrationApiTest extends BaseApiTest {
                 .andReturn().getResponse().getContentAsString();
 
         response = getApiResponseFromString(contentAsString);
-        errorResponse = getListListDataFromApiResponse(response, ErrorResponse.class);
+        errorResponse = getListDataFromApiResponse(response, ErrorResponse.class);
 
         assertThat(response).isNotNull();
         assertThat(response.status()).isEqualTo(ApiResponseType.MULTIPLE_ERROR);

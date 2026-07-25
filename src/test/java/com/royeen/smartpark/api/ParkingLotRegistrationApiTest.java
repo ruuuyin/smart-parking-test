@@ -6,7 +6,6 @@ import com.royeen.smartpark.models.presentation.RegisterParkingLotRequest;
 import com.royeen.smartpark.models.presentation.RegisterParkingLotResponse;
 import com.royeen.smartpark.models.presentation.base.ApiResponseType;
 import com.royeen.smartpark.models.presentation.base.ErrorResponse;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,10 +16,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class ParkingLotRegistrationApiTest extends BaseApiTest {
 
+    public static final String URI_TEMPLATE = "/api/parking-lot";
+
     @Autowired
     ParkingLotRepository parkingLotRepository;
 
-    @DisplayName("Given: Valid Params; When: Register Parking Lot; Then: Return Created with Response")
     @Test
     void testSuccess() throws Exception {
 
@@ -30,7 +30,7 @@ class ParkingLotRegistrationApiTest extends BaseApiTest {
                 .capacity(10)
                 .build();
 
-        var contentAsString = super.mockMvc.perform(post("/api/parking-lot")
+        var contentAsString = super.mockMvc.perform(post(URI_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestBody)))
                 .andExpect(status().isCreated())
@@ -51,7 +51,6 @@ class ParkingLotRegistrationApiTest extends BaseApiTest {
 
     }
 
-    @DisplayName("Given: Non-unique lot id; When: Register Parking Lot; Then: Return Bad Request with Response")
     @Test
     void testNonUniqueLotId() throws Exception {
         parkingLotRepository.save(ParkingLotEntity.builder()
@@ -67,7 +66,7 @@ class ParkingLotRegistrationApiTest extends BaseApiTest {
                 .capacity(10)
                 .build();
 
-        var contentAsString = super.mockMvc.perform(post("/api/parking-lot")
+        var contentAsString = super.mockMvc.perform(post(URI_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestBody)))
                 .andExpect(status().isBadRequest())
@@ -80,7 +79,6 @@ class ParkingLotRegistrationApiTest extends BaseApiTest {
         assertThat(response.message()).isEqualTo("Parking lot with lot id 'non-unique-123' already exists");
     }
 
-    @DisplayName("Given: Invalid Params; When: Register Parking Lot; Then: Return Bad Request with Response")
     @Test
     void testInvalidRequestsBody() throws Exception {
         var requestBody = RegisterParkingLotRequest.builder()
@@ -89,14 +87,14 @@ class ParkingLotRegistrationApiTest extends BaseApiTest {
                 .capacity(null)
                 .build();
 
-        var contentAsString = super.mockMvc.perform(post("/api/parking-lot")
+        var contentAsString = super.mockMvc.perform(post(URI_TEMPLATE)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(requestBody)))
                 .andExpect(status().isBadRequest())
                 .andReturn().getResponse().getContentAsString();
 
         var response = getApiResponseFromString(contentAsString);
-        var errorResponse = getListListDataFromApiResponse(response, ErrorResponse.class);
+        var errorResponse = getListDataFromApiResponse(response, ErrorResponse.class);
 
         assertThat(response).isNotNull();
         assertThat(response.status()).isEqualTo(ApiResponseType.MULTIPLE_ERROR);
@@ -120,7 +118,7 @@ class ParkingLotRegistrationApiTest extends BaseApiTest {
                 .andReturn().getResponse().getContentAsString();
 
         response = getApiResponseFromString(contentAsString);
-        errorResponse = getListListDataFromApiResponse(response, ErrorResponse.class);
+        errorResponse = getListDataFromApiResponse(response, ErrorResponse.class);
 
         assertThat(response).isNotNull();
         assertThat(response.status()).isEqualTo(ApiResponseType.MULTIPLE_ERROR);

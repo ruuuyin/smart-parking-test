@@ -1,6 +1,6 @@
 package com.royeen.smartpark.models.entity;
 
-import com.royeen.smartpark.models.domain.VehicleType;
+import com.royeen.smartpark.models.domain.ParkingStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,21 +13,21 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @Entity
-@Table(name = "vehicles")
+@Table(name = "parking_transactions")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class VehicleEntity extends BaseEntity {
-
-    @Column(nullable = false, unique = true)
-    private String licensePlate;
-
-    @Enumerated(EnumType.STRING)
-    private VehicleType vehicleType;
+public class ParkingTransactionEntity extends BaseEntity {
 
     @Column(nullable = false)
-    private String ownerName;
+    private String parkingLotId;
+
+    @Column(nullable = false)
+    private String vehicleLicensePlate;
+
+    @Enumerated(EnumType.STRING)
+    private ParkingStatus parkingStatus;
 
 }
