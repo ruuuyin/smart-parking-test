@@ -45,8 +45,8 @@ public class GlobalControllerHandler {
     public ResponseEntity<ApiResponse> handleClientSideException(ClientSideException ex) {
         log.error("Client-side error occurred: {} \n Stacktrace: {}", ex.getMessage(), ex.getStackTrace());
         return ResponseEntity
-                .badRequest()
-                .body(ApiResponse.error(ex.getMessage()));
+                .status(ex.getHttpStatus())
+                .body(ApiResponse.error(ex));
     }
 
 

@@ -1,0 +1,1481 @@
+{
+  "info": {
+    "_postman_id": "9b02f72a-d531-4266-a34b-c97fa409bb69",
+    "name": "Smart Park",
+    "description": "Postman collection generated from Spring REST Docs snippets under `target/generated-snippets`.\n\nRegenerate after running tests:\n\n    .\\mvnw.cmd test\n    python scripts/generate-postman-collection.py",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15245515",
+    "_collection_link": "https://go.postman.co/collection/15245515-9b02f72a-d531-4266-a34b-c97fa409bb69?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Checkout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"license_plate\": \"XYZ123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-out",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "parking-lot",
+            "vehicle",
+            "check-out"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "202 Accepted",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": \"XYZ123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-out",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-out"
+              ]
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "171"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:54:02 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Vehicle has been checked out successfully\",\n    \"data\": {\n        \"transaction_id\": \"1\",\n        \"license_plate\": \"XYZ123\",\n        \"lot_id\": \"LOT_001\",\n        \"status\": \"CHECKED_OUT\"\n    }\n}"
+        },
+        {
+          "name": "404 - No active transaction for Vehicle",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": \"XYZ123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-out",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-out"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:54:45 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"No active parking transaction found for vehicle with license plate 'XYZ123'\"\n}"
+        },
+        {
+          "name": "400 - Invalid Requests Body",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-out",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-out"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:56:04 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"licensePlate\",\n            \"message\": \"License plate is required\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "400 - Vehicle Not Found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": \"12333333\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-out",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-out"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:56:53 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Vehicle with license plate '12333333' does not exist\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Check In",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lot_id\": \"LOT_001\",\n  \"license_plate\": \"XYZ125\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "parking-lot",
+            "vehicle",
+            "check-in"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "202 Accepted",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"LOT_001\",\n  \"license_plate\": \"XYZ125\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-in"
+              ]
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "169"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:48:09 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Vehicle has been checked in successfully\",\n    \"data\": {\n        \"transaction_id\": \"4\",\n        \"license_plate\": \"XYZ125\",\n        \"lot_id\": \"LOT_001\",\n        \"status\": \"CHECKED_IN\"\n    }\n}"
+        },
+        {
+          "name": "404 - Parking Lot not found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"LOT-123\",\n  \"license_plate\": \"ABC-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-in"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:46:46 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Parking lot with lot id 'LOT-123' does not exist\"\n}"
+        },
+        {
+          "name": "404 - Vehicle Not Found",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"LOT_001\",\n  \"license_plate\": \"ABC-12444\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-in"
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:47:30 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Vehicle with license plate 'ABC-12444' does not exist\"\n}"
+        },
+        {
+          "name": "400 - Already Checked In",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"LOT_001\",\n  \"license_plate\": \"XYZ125\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-in"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:49:03 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Vehicle with license plate 'XYZ125' is already checked in\"\n}"
+        },
+        {
+          "name": "400 - Invalid Request Body - 1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": null,\n  \"license_plate\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-in"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:50:56 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"lotId\",\n            \"message\": \"Lot id is required\"\n        },\n        {\n            \"key\": \"licensePlate\",\n            \"message\": \"License plate is required\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "400 - Invalid Request Body",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"123456789012345678901234567890123456789012345678901234567890\",\n  \"license_plate\": \"123###\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/vehicle/check-in",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                "vehicle",
+                "check-in"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:51:52 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"licensePlate\",\n            \"message\": \"License plate must contain only letters, numbers, and dashes\"\n        },\n        {\n            \"key\": \"lotId\",\n            \"message\": \"Lot ID must not exceed 50 characters\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Parking Lot Details and Occupancy Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/parking-lot/:lotId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "parking-lot",
+            ":lotId"
+          ],
+          "query": [
+            {
+              "key": "size",
+              "value": "10",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "0",
+              "disabled": true
+            }
+          ],
+          "variable": [
+            {
+              "key": "lotId",
+              "value": "LOT_001"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/:lotId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                ":lotId"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "lotId",
+                  "value": "LOT_001"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "122"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:43:28 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"success\",\n    \"data\": {\n        \"lot_id\": \"LOT_001\",\n        \"capacity\": 10,\n        \"occupied_spaces\": 1,\n        \"available_space\": 9\n    }\n}"
+        },
+        {
+          "name": "404 - Parking lot not found",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/:lotId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                ":lotId"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "lotId",
+                  "value": "LOT_0011111"
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:44:11 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Parking lot with lot id 'LOT_0011111' does not exist\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get Vehicles in Parking Lot",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/parking-lot/:lotId/vehicles",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "parking-lot",
+            ":lotId",
+            "vehicles"
+          ],
+          "query": [
+            {
+              "key": "size",
+              "value": "10",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "0",
+              "disabled": true
+            }
+          ],
+          "variable": [
+            {
+              "key": "lotId",
+              "value": "LOT_001"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot/:lotId/vehicles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot",
+                ":lotId",
+                "vehicles"
+              ],
+              "query": [
+                {
+                  "key": "size",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "disabled": true
+                }
+              ],
+              "variable": [
+                {
+                  "key": "lotId",
+                  "value": "LOT_001"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "185"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:41:13 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"success\",\n    \"data\": {\n        \"total\": 1,\n        \"total_pages\": 1,\n        \"current_size\": 1,\n        \"current_page\": 0,\n        \"content\": [\n            {\n                \"license_plate\": \"XYZ123\",\n                \"type\": \"CAR\",\n                \"owner_name\": \"John Doe\"\n            }\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "Parking Lot Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"lot_id\": \"lot-123\",\n  \"location\": \"test-location\",\n  \"capacity\": 10\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/parking-lot",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "parking-lot"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "201 Created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"lot-123\",\n  \"location\": \"test-location\",\n  \"capacity\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "153"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:34:09 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [
+            {
+              "expires": "Invalid Date",
+              "domain": "",
+              "path": ""
+            }
+          ],
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Parking Lot has been registered successfully\",\n    \"data\": {\n        \"id\": 4,\n        \"lot_id\": \"lot-123\",\n        \"location\": \"test-location\",\n        \"capacity\": 10\n    }\n}"
+        },
+        {
+          "name": "400 - Non Unique Lot Id",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"non-unique-123\",\n  \"location\": \"test-location\",\n  \"capacity\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:35:34 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Parking lot with lot id 'non-unique-123' already exists\"\n}"
+        },
+        {
+          "name": "400 - Invalid Request Body",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_id\": \"123456789012345678901234567890123456789012345678901234567890\",\n  \"location\": \"valid location\",\n  \"capacity\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:36:48 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"lotId\",\n            \"message\": \"Lot ID must not exceed 50 characters\"\n        },\n        {\n            \"key\": \"capacity\",\n            \"message\": \"Capacity must be a positive integer\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "400 - Invalid Request Body - 1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lot_d\": null,\n  \"location\": null,\n  \"capacity\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/parking-lot",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "parking-lot"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:37:31 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"capacity\",\n            \"message\": \"Capacity is required\"\n        },\n        {\n            \"key\": \"location\",\n            \"message\": \"Location is required\"\n        },\n        {\n            \"key\": \"lotId\",\n            \"message\": \"Lot id is required\"\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"license_plate\": \"12345\",\n  \"vehicle_type\": \"CAR\",\n  \"owner_name\": \"TEST USER\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/vehicle",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "vehicle"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "201 Created",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": \"12345\",\n  \"vehicle_type\": \"CAR\",\n  \"owner_name\": \"TEST USER\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicle"
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Content-Length",
+              "value": "159"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:30:14 GMT"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=60"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"message\": \"Vehicle has been registered successfully\",\n    \"data\": {\n        \"id\": 4,\n        \"license_plate\": \"12345\",\n        \"vehicle_type\": \"CAR\",\n        \"owner_name\": \"TEST USER\"\n    }\n}"
+        },
+        {
+          "name": "400 - Non Unique License Plate",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": \"12345\",\n  \"vehicle_type\": \"CAR\",\n  \"owner_name\": \"TEST USER\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicle"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:30:36 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"ERROR\",\n    \"message\": \"Vehicle with license plate '12345' already exists\"\n}"
+        },
+        {
+          "name": "400 - Invalid Request Body",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": \"@#$%^\",\n  \"vehicle_type\": \"CAR\",\n  \"owner_name\": \"@#$%^\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicle"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:31:36 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"ownerName\",\n            \"message\": \"Owner name must contain only letters and spaces\"\n        },\n        {\n            \"key\": \"licensePlate\",\n            \"message\": \"License plate must contain only letters, numbers, and dashes\"\n        }\n    ]\n}"
+        },
+        {
+          "name": "400 - Invalid Request body - 1",
+          "originalRequest": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"license_plate\": null,\n  \"vehicle_type\": null,\n  \"owner_name\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/vehicle",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "vehicle"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "description": "",
+              "type": "text"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Date",
+              "value": "Sat, 25 Jul 2026 03:32:51 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"status\": \"MULTIPLE_ERROR\",\n    \"message\": \"Validation failed\",\n    \"data\": [\n        {\n            \"key\": \"licensePlate\",\n            \"message\": \"License plate is required\"\n        },\n        {\n            \"key\": \"vehicleType\",\n            \"message\": \"Vehicle type is required\"\n        },\n        {\n            \"key\": \"ownerName\",\n            \"message\": \"Owner name is required\"\n        }\n    ]\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}

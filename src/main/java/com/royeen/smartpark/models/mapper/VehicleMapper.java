@@ -3,8 +3,10 @@ package com.royeen.smartpark.models.mapper;
 import com.royeen.smartpark.models.RegisterVehicleRequest;
 import com.royeen.smartpark.models.domain.Vehicle;
 import com.royeen.smartpark.models.entity.VehicleEntity;
+import com.royeen.smartpark.models.presentation.GetVehiclesInParkingLotResponse;
 import com.royeen.smartpark.models.presentation.RegisterVehicleResponse;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface VehicleMapper {
@@ -15,4 +17,7 @@ public interface VehicleMapper {
     RegisterVehicleResponse toResponse(Vehicle savedVehicle);
 
     Vehicle toDomain(VehicleEntity entity);
+
+    @Mapping(target = "type", source = "vehicleType")
+    GetVehiclesInParkingLotResponse toGetVehiclesInParkingLotResponse(Vehicle vehicle);
 }
