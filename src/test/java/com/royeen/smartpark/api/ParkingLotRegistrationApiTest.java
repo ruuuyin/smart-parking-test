@@ -1,13 +1,11 @@
 package com.royeen.smartpark.api;
 
-import com.royeen.smartpark.gateway.repository.ParkingLotRepository;
 import com.royeen.smartpark.models.entity.ParkingLotEntity;
 import com.royeen.smartpark.models.presentation.RegisterParkingLotRequest;
 import com.royeen.smartpark.models.presentation.RegisterParkingLotResponse;
 import com.royeen.smartpark.models.presentation.base.ApiResponseType;
 import com.royeen.smartpark.models.presentation.base.ErrorResponse;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,9 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ParkingLotRegistrationApiTest extends BaseApiTest {
 
     public static final String URI_TEMPLATE = "/api/parking-lot";
-
-    @Autowired
-    ParkingLotRepository parkingLotRepository;
 
     @Test
     void testSuccess() throws Exception {

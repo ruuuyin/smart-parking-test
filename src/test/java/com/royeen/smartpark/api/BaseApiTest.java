@@ -1,5 +1,8 @@
 package com.royeen.smartpark.api;
 
+import com.royeen.smartpark.gateway.repository.ParkingLotRepository;
+import com.royeen.smartpark.gateway.repository.ParkingTransactionRepository;
+import com.royeen.smartpark.gateway.repository.VehicleRepository;
 import com.royeen.smartpark.models.presentation.base.ApiResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,6 +38,15 @@ public abstract class BaseApiTest {
     @Autowired
     protected ObjectMapper objectMapper;
 
+    @Autowired
+    protected ParkingTransactionRepository parkingTransactionRepository;
+
+    @Autowired
+    protected ParkingLotRepository parkingLotRepository;
+
+    @Autowired
+    protected VehicleRepository vehicleRepository;
+
     @BeforeEach
     void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentation) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
@@ -49,7 +61,7 @@ public abstract class BaseApiTest {
         return objectMapper.readValue(contentAsString, ApiResponse.class);
     }
 
-    protected  <T> T getObjectDataFromApiResponse(ApiResponse response, Class<T> clazz) {
+    protected <T> T getObjectDataFromApiResponse(ApiResponse response, Class<T> clazz) {
         return objectMapper.readValue(objectMapper.writeValueAsString(response.data()), clazz);
     }
 

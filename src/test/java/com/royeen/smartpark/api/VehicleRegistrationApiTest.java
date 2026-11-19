@@ -1,6 +1,5 @@
 package com.royeen.smartpark.api;
 
-import com.royeen.smartpark.gateway.repository.VehicleRepository;
 import com.royeen.smartpark.models.RegisterVehicleRequest;
 import com.royeen.smartpark.models.domain.VehicleType;
 import com.royeen.smartpark.models.entity.VehicleEntity;
@@ -8,7 +7,6 @@ import com.royeen.smartpark.models.presentation.RegisterVehicleResponse;
 import com.royeen.smartpark.models.presentation.base.ApiResponseType;
 import com.royeen.smartpark.models.presentation.base.ErrorResponse;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,9 +14,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class VehicleRegistrationApiTest extends BaseApiTest {
-
-    @Autowired
-    VehicleRepository vehicleRepository;
 
     @Test
     void testSuccess() throws Exception {

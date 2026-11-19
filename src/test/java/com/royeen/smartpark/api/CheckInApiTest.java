@@ -1,8 +1,5 @@
 package com.royeen.smartpark.api;
 
-import com.royeen.smartpark.gateway.repository.ParkingLotRepository;
-import com.royeen.smartpark.gateway.repository.ParkingTransactionRepository;
-import com.royeen.smartpark.gateway.repository.VehicleRepository;
 import com.royeen.smartpark.models.domain.ParkingStatus;
 import com.royeen.smartpark.models.domain.VehicleType;
 import com.royeen.smartpark.models.entity.ParkingLotEntity;
@@ -15,7 +12,6 @@ import com.royeen.smartpark.models.presentation.base.ErrorResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,15 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CheckInApiTest extends BaseApiTest {
 
     public static final String URI_TEMPLATE = "/api/parking-lot/vehicle/check-in";
-
-    @Autowired
-    ParkingTransactionRepository parkingTransactionRepository;
-
-    @Autowired
-    ParkingLotRepository parkingLotRepository;
-
-    @Autowired
-    VehicleRepository vehicleRepository;
 
     @BeforeEach
     void setup() {

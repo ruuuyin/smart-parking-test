@@ -1,7 +1,5 @@
 package com.royeen.smartpark.api;
 
-import com.royeen.smartpark.gateway.repository.ParkingLotRepository;
-import com.royeen.smartpark.gateway.repository.ParkingTransactionRepository;
 import com.royeen.smartpark.models.domain.ParkingStatus;
 import com.royeen.smartpark.models.entity.ParkingLotEntity;
 import com.royeen.smartpark.models.entity.ParkingTransactionEntity;
@@ -10,7 +8,6 @@ import com.royeen.smartpark.models.presentation.base.ApiResponseType;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,12 +16,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class GetParkingLotOccupancyStatusApiTest extends BaseApiTest {
 
     public static final String URI_TEMPLATE = "/api/parking-lot/{parkingLotId}";
-
-    @Autowired
-    ParkingLotRepository parkingLotRepository;
-
-    @Autowired
-    ParkingTransactionRepository parkingTransactionRepository;
 
     @BeforeEach
     void setUp() {
